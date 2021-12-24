@@ -1,0 +1,17 @@
+:root {
+  --ice: #81a4cd;
+  --blue: #dbe4ee;
+  --orange: #f17300;
+  --purple: #473144;
+  --green: #6baa75;
+}
+
+body {
+  background: var(--blue);
+  color: var(--purple);
+  margin: 2em;
+}
+
+h1 {
+  text-align: center;
+}
