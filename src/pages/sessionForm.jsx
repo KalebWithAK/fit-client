@@ -1,23 +1,26 @@
-import '../styles/session.css';
+import '../styles/sessionForm.css';
 import addIcon from '../images/add-iconfinder.png';
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import SelectConcentration from '../components/selectConcentration';
 import SelectExercise from '../components/selectExercise';
 
-
-function Session() {
+function SessionForm() {
     const [concentration, setConcentration] = useState('');
     const [exercises, setExercises] = useState([]);
+ 
 
-    useEffect(() => {
-        fetch('http://localhost:3001/')
-        .then(res => res.json())
-        .then(data => console.log(data));
-    }, [])
-
-    /*function sendSession() {
+    function sendSession(e) {
+        // for now
+        e.preventDefault();
+        
         const data = { concentration, exercises };
-    }*/
+
+        fetch('http://localhost:3001/input_session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    }
 
     function addExercise(e) {
         e.preventDefault();
@@ -53,11 +56,6 @@ function Session() {
         console.log(exercises);
     }
 
-    /*function sendSession() {
-       // TODO - send exercises to server
-       fetch() 
-    }*/
-
 
     return (
         <form>
@@ -68,9 +66,9 @@ function Session() {
                 {/*<button className='addExercise' onClick={addExercise}>add exercise</button>*/}
                 <img className='addIcon' id='addExercise' src={addIcon} alt='add a new exercise' onClick={addExercise} />
             </div>
-            <button onClick={listExercises}>list exercises</button>
+            <button onClick={sendSession}>submit</button>
         </form>
     );
 }
 
-export default Session;
+export default SessionForm;

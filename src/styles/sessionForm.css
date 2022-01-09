@@ -26,13 +26,15 @@ button {
 }
 
 .selectConcentration {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .exercises {
     display: flex;
     margin: auto;
-    max-width: 50em;
+    max-width: 69em;
     justify-content: center;
     align-items: flex-start;
     gap: 1em;
@@ -41,7 +43,7 @@ button {
 }
 
 .selectExercise {
-    width: 15em;
+    width: 16em;
     text-align: center;
     border: solid var(--ice) 0.25em;
     border-radius: 0.5em;
@@ -56,6 +58,7 @@ button {
 }
 
 .inputSet {
+    padding: 1em;
     display: grid;
     grid-template-columns: repeat(2, 1fr 2fr);
     align-items: center;
@@ -70,9 +73,6 @@ button {
     margin: 1em 0;
 }
 
-.addIcon:hover {
-    width: 3em;
-}
 
 #addExercise {
     align-self: center;

@@ -1,4 +1,4 @@
-import '../styles/session.css';
+import '../styles/sessionForm.css';
 import { React, useState } from 'react';
 import InputSet from './inputSet';
 import addIcon from '../images/add-iconfinder.png';
@@ -34,7 +34,7 @@ function SelectExercise(props) {
 
         return (
             <div className='selectExercise'>
-                <h3>exercise {id + 1}</h3>
+                <label htmlFor='exercise'>Exercise Name:</label>
                 <select name='exercise' id='exercise' onChange={exerciseChange}>
                     <Lower />
                     <Core />
@@ -52,7 +52,7 @@ function SelectExercise(props) {
 
         return (
             <div className='selectExercise'>
-                <h3>exercise {id + 1}</h3>
+                <label htmlFor='exercise'>Exercise Name:</label>
                 <select name='exercise' id='exercise' onChange={exerciseChange}>
                     <Upper />
                     <Core />
@@ -70,7 +70,7 @@ function SelectExercise(props) {
 
         return (
             <div className='selectExercise'>
-                <h3>exercise {id + 1}</h3>
+                <label htmlFor='exercise'>Exercise Name:</label>
                 <select name='exercise' id='exercise' onChange={exerciseChange}>
                     <Core />
                     <Lower />

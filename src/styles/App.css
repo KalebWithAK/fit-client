@@ -12,6 +12,25 @@ body {
   margin: 2em;
 }
 
-h1 {
+header {
+  margin-bottom: 1em;
+}
+
+h1, h2 {
+  color: var(--orange);
   text-align: center;
+}
+
+nav {
+  text-align: center;
+}
+
+nav > a, nav > a:visited {
+  margin: 0 1em;
+  color: var(--orange);
+  text-decoration: none;
+}
+nav > a:hover {
+  color: var(--green);
+  text-decoration: underline;
 }
