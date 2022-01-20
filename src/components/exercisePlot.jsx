@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 
-function ExercisePlot (props) {
+function ExercisePlot ({plotData}) {
     const [dates, setDates] = useState([]);
     const [minWeights, setMinWeights] = useState([]);
     const [maxWeights, setMaxWeights] = useState([]);
@@ -12,48 +12,27 @@ function ExercisePlot (props) {
     const [title, setTitle] = useState('min and max weight of each session');
 
     useEffect(() => {
-        addValues(props.plotData);
-    }, [props.plotData]);
+        setDates([]);
+        setMinWeights([]);
+        setMaxWeights([]);
+        setMinReps([]);
+        setMaxReps([]);
 
-    function addValues(arr) {
-        if (arr.length > 0) {
-            setDates([]);
-
-            setMinWeights([]);
-            setMaxWeights([]);
-
-            setMinReps([]);
-            setMaxReps([]);
-
-            if (arr.length > 1) {
-                arr.forEach(i => {
-                    setDates([...dates, new Date(i.time)]);
-
-                    setMinWeights([...minWeights, i.min_weight]);
-                    setMaxWeights([...maxWeights, i.max_weight]);
-
-                    setMinReps([...minReps, i.min_reps]);
-                    setMaxReps([...maxReps, i.max_reps]);
-                });
-            }
-            else {
-                setDates([new Date(arr[0].time), new Date()]);
-
-                setMinWeights([arr[0].min_weight, 0]);
-                setMaxWeights([arr[0].max_weight, 0]);
-
-                setMinReps([arr[0].min_reps, 0]);
-                setMaxReps([arr[0].max_reps, 0]);
-            }
-        }
-    }
+        plotData.forEach(i => {
+            setDates(dates => [...dates, i.time]);
+            setMinWeights(minWeights => [...minWeights, i.min_weight]);
+            setMaxWeights(maxWeights => [...maxWeights, i.max_weight]);
+            setMinReps(minReps => [...minReps, i.min_reps]);
+            setMaxReps(maxReps => [...maxReps, i.max_reps]);
+        });
+    }, [plotData]);
 
     function plotTypeChange(e) {
         setPlotType(e.target.value);
         setTitle('min and max ' + e.target.value + ' of each session');
     }
 
-    if (props.plotData.length > 0) {
+    if (plotData.length > 1) {
         if (plotType === 'weight') {
             return (
                 <>
@@ -127,6 +106,12 @@ function ExercisePlot (props) {
         <>
         </>
     );
+}
+
+function addItem(arr, i) {
+    arr.push(i);
+
+    return arr;
 }
 
 export default ExercisePlot;
