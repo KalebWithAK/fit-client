@@ -10,11 +10,10 @@ function SessionForm() {
  
 
     function sendSession(e) {
-        // for now
         e.preventDefault();
         
         const data = { concentration, exercises };
-
+        
         fetch('http://localhost:3001/input_session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -26,7 +25,7 @@ function SessionForm() {
         e.preventDefault();
     
         if (concentration) {
-            setExercises([...exercises, { id: exercises.length, name: '', sets: [] }]);
+            setExercises([...exercises, { id: exercises.length, exercise_name: '', sets: [] }]);
         }
     }
 
@@ -43,7 +42,7 @@ function SessionForm() {
     }
 
     function exerciseName(id, name) {
-        exercises[id].name = name;
+        exercises[id].exercise_name = name;
     }
 
     function updateSets(id, sets) {
@@ -52,8 +51,6 @@ function SessionForm() {
 
     function listExercises(e) {
         e.preventDefault();
-
-        console.log(exercises);
     }
 
 
